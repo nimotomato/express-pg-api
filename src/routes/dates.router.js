@@ -17,7 +17,6 @@ newsRouter.get("/", async (request, response) => {
     } catch (error) {
         return response.status(500).json(error.message)
     }
-    response.send("using dates router");
 });
 
 

@@ -10,7 +10,7 @@ module.exports = getSentiments = async (startDate, endDate) => {
 
 
     const result = await pool.query(queryString);
-
+    console.log(result)
     
     const news = await result.rows;
 

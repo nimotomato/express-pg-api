@@ -11,10 +11,12 @@ const newsRouter = express.Router();
 newsRouter.get("/", async (request, response) => {
     try {
         // Take the query params and use in prisma query.
-        const startDate = (request.query).startDate;
-        const endDate = (request.query).endDate;
-        console.log(startDate, endDate)
-        console.log(request.query)
+        const startDate = request.query?.startDate;
+        const endDate = request.query?.endDate;
+
+        if (!startDate || !endDate) {
+            return response.status(400).json({ error: 'startDate and endDate are required' });
+        }
 
         // Call prisma query
         const news = await newsService(startDate, endDate)
