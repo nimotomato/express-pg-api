@@ -1,9 +1,8 @@
-import { query } from 'express';
-import pool from '../database.js';
+const pool = require('../database.js').default;
 
 
 // Get labels and the corresponding region for each entry within the specified dates.
-export const getSentiments = async (startDate, endDate) => {
+module.exports = getSentiments = async (startDate, endDate) => {
     const queryString =`SELECT n."date", s."label", n.region\
     FROM public.news n\
     JOIN public.sentiments s ON s.news_id = n.id\

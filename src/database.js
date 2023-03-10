@@ -1,7 +1,5 @@
-import pg from "pg";
-import "dotenv/config.js";
+const { Pool } = require('pg');
 
-const { Pool } = pg;
 
 
 const pool = new Pool({
@@ -13,4 +11,4 @@ const pool = new Pool({
     ssl: process.env.SSL
 });
 
-export default pool;
+module.exports = pool;

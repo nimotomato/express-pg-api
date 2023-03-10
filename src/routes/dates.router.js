@@ -1,17 +1,17 @@
-import express from "express";
+const express = require('express');
 
 
-import * as datesService from "../services/dates.service.js";
+const getDates = require("../services/dates.service.js");
 
 
 const newsRouter = express.Router();
 
 
 //GET: start and end date for data
-export default newsRouter.get("/", async (request, response) => {
+newsRouter.get("/", async (request, response) => {
     try {
         // Call prisma query
-        const dateRange = await datesService.getDates()
+        const dateRange = await getDates()
 
         return response.status(200).json(dateRange)
     } catch (error) {
@@ -19,3 +19,6 @@ export default newsRouter.get("/", async (request, response) => {
     }
     response.send("using dates router");
 });
+
+
+module.exports = newsRouter;

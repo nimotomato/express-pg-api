@@ -1,8 +1,8 @@
-import pool from '../database.js';
+const pool = require('../database.js');
 
 
 // Get first and last date from database
-export const getDates = async () => {
+module.exports = getDates = async () => {
     const queryString = 'SELECT MIN(n.date) as startDate, MAX(n.date) as endDate\
     FROM news n\
     INNER JOIN sentiments s ON n.id = s.news_id;'
